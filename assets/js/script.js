@@ -47,12 +47,12 @@ var saveTasks = function() {
 
 $(".list-group ").on("click", "p", function() {
   var text=$(this)
-  .text()
-  .trim();
+    .text()
+    .trim();
 
   var textInput = $("<textarea>")
-  .addClass("form-control")
-  .val(text);
+    .addClass("form-control")
+    .val(text);
 
   $(this).replaceWith(textInput);
 
@@ -62,24 +62,24 @@ $(".list-group ").on("click", "p", function() {
 $(".list-group").on("blur", "textarea", function() {
   // get the textarea's current value/text
   var text = $(this)
-  .val()
-  .trim();
+    .val()
+    .trim();
 
   // get the parent ul's id attribute
   var status = $(this)
-  .closest(".list-group")
-  .attr("id")
-  .replace("list-", "");
+    .closest(".list-group")
+    .attr("id")
+    .replace("list-", "");
 
   //get the task's position in the list of other li elements
   var index = $(this)
-  .closest(".list-group-item")
-  .index();
+    .closest(".list-group-item")
+    .index();
 
   //recreate the p element
   var taskP = $("<p>")
-  .addClass("m-1")
-  .text(text);
+    .addClass("m-1")
+    .text(text);
 
   //replace textarea with p element
   $(this).replaceWith(taskP);
@@ -87,16 +87,16 @@ $(".list-group").on("blur", "textarea", function() {
 
 //due date was clicked
 $(".list-group").on("click", "span", function() {
-  //get current text
+  // get current text
   var date = $(this)
-  .text()
-  .trim();
+    .text()
+    .trim();
 
   //create a new input element
   var dateInput = $("<input>")
-  .attr("type", "text")
-  .addClass("form-control")
-  .val(date);
+    .attr("type", "text")
+    .addClass("form-control")
+    .val(date);
 
   //swaps out elements
   $(this).replaceWith(dateInput);
@@ -109,19 +109,19 @@ $(".list-group").on("click", "span", function() {
 $(".list-group").on("blur", "input[type='text']", function() {
   //get current text
   var date = $(this)
-  .val()
-  .trim();
+    .val()
+    .trim();
 
   //get the parent ul id attribute
   var status = $(this)
-  .closest(".list-group")
-  .attr("id")
-  .replace("list-", "");
+    .closest(".list-group")
+    .attr("id")
+    .replace("list-", "");
 
   //get the tasks position in the list of other li elements
   var index = $(this)
-  .closest(".list-group=item")
-  .index();
+    .closest(".list-group-item")
+    .index();
 
   //update task in array and re-save to localstorage
   tasks[status][index].date = date;
@@ -129,8 +129,8 @@ $(".list-group").on("blur", "input[type='text']", function() {
 
   //recreate span element with bootstrap classes
   var taskSpan = $("<span>")
-  .addClass("badge badge-primary badge-pill")
-  .text(date);
+    .addClass("badge badge-primary badge-pill")
+    .text(date);
 
   //replace input with span element
   $(this).replaceWith(taskSpan);
